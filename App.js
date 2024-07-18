@@ -1,20 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
+import RootNavigator from "./src/navigation/RootNavigator";
+import RootContainer from "./src/containers/RootContainer";
+import {
+   QueryClient,
+   QueryClientProvider,
+} from '@tanstack/react-query'
+
+
+const queryClient = new QueryClient();
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+   return (
+      <>
+         <RootContainer>
+            <QueryClientProvider client={queryClient}>
+               <RootNavigator/>
+            </QueryClientProvider>
+         </RootContainer>
+      </>
+   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
