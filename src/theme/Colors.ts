@@ -4,6 +4,8 @@ export const Colors = {
     inputBackground: '#FFFFFF',
     background: '#FFFFFF',
     white: '#ffffff',
+    whiteLight: '#ccc6c6',
+
     //Typography
     textGray800: '#000000',
     textGray400: '#4D4D4D',
@@ -17,7 +19,8 @@ export const Colors = {
     //ComponentColors
     circleButtonBackground: '#E1E1EF',
     circleButtonColor: '#44427D',
-
+    black : "#000000",
+    yellowBackground: '#F4930A',
     //Splash
     splashBackground: '#F4930A',
     ringOuter: '#F5A632',

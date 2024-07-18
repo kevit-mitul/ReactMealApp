@@ -19,6 +19,7 @@ import APIManager from "../api/APIManager";
 import {CATDATA, MEALDATA} from "../data";
 import {CategoryItemType} from "../types/CategoryItem.type";
 import {MealItemType} from "../types/MealItemType";
+import {useQuery} from "@tanstack/react-query";
 
 function HomeScreen() {
 
@@ -47,7 +48,6 @@ function HomeScreen() {
             setMeals([])
             // getMeals(selectedCategory.strCategory)
             setMeals(MEALDATA)
-
         }
     }, [selectedCategory]);
 

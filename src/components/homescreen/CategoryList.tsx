@@ -12,7 +12,7 @@ type CategoryProps = {
     onCategoryChange : (selectedCategory: CategoryItemType) => void,
 }
 
-export default function CategoryList({categories, selectedCategory, onCategoryChange}: CategoryProps) {
+export default function CategoryList({categories = [], selectedCategory, onCategoryChange}: CategoryProps) {
 
 
     useEffect(() => {

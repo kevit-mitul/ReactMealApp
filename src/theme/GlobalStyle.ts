@@ -6,6 +6,7 @@ export const Layout = StyleSheet.create({
     container: {
         flex:1,
         paddingTop:Platform.OS == "android" ? StatusBar.currentHeight : 0,
+
     },
     titleText : {
         fontSize : Size.lg
@@ -20,6 +21,22 @@ export const Layout = StyleSheet.create({
     subtitleText : {
         fontSize : Size.sm
     },
+
+    flexRow : {
+        flexDirection: "row",
+    },
+
+    justifyBetween : {
+        justifyContent : "space-around"
+    },
+    justifyCenter : {
+        justifyContent : "center"
+    },
+
+    alignCenter : {
+        alignItems : "center"
+    }
+
 
 })
 
