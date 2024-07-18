@@ -16,6 +16,7 @@ export const Colors = {
     textGray : "#919191",
     heading : "#020202",
     bgGray : "#ECEEEC",
+    labelBlue : "#003afb",
     //ComponentColors
     circleButtonBackground: '#E1E1EF',
     circleButtonColor: '#44427D',

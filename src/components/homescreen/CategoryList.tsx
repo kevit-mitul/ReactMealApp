@@ -4,26 +4,29 @@ import Animated, {FadeInDown} from "react-native-reanimated";
 import {useEffect} from "react";
 import {CategoryItemType} from "../../types/CategoryItem.type";
 import {useCategorySlice} from "../../store/slices/categorySlice";
+import {setSelectedCategory } from "../../store/slices/categorySlice";
+import {useDispatch} from "react-redux";
 
-type CategoryProps = {
-    categories?: CategoryItemType[],
-    selectedCategory? : CategoryItemType,
-    onCategoryChange : (selectedCategory: CategoryItemType) => void,
-}
+// type CategoryProps = {
+//     categories?: CategoryItemType[],
+//     selectedCategory? : CategoryItemType,
+//     onCategoryChange : (selectedCategory: CategoryItemType) => void,
+// }
 
-export default function CategoryList({categories = [], selectedCategory, onCategoryChange}: CategoryProps) {
+export default function CategoryList() {
+    const dispatch = useDispatch();
+    const { categoryList, selectedCategory } = useCategorySlice()
 
-    const { categoryList, selectedCategory:selectedReduxCategory } = useCategorySlice()
-
-    console.log(categoryList, selectedReduxCategory)
 
     useEffect(() => {
-        if (categories.length > 0)
-            onCategoryChange(categories[0])
-    }, [categories])
+        if (categoryList.length > 0)
+            dispatch(setSelectedCategory(categoryList[0]))
+    }, [categoryList])
 
-    const handleCategoryClick = (item : CategoryItemType) => {
-        onCategoryChange(item);
+    console.log(categoryList.length)
+
+    const handleCategoryClick = (category : CategoryItemType) => {
+        dispatch(setSelectedCategory(category))
     }
 
     return (
@@ -33,10 +36,9 @@ export default function CategoryList({categories = [], selectedCategory, onCateg
                 showsHorizontalScrollIndicator={false}
                 keyExtractor={(item) => item.idCategory}
                 ItemSeparatorComponent={() => <View style={{width: 15}}></View>}
-                data={categories}
+                data={categoryList}
                 renderItem={({item}) => <CategoryListItem item={item} selectedCategory={selectedCategory}
                                                           onSelect={handleCategoryClick}/>}/>
-
         </Animated.View>
     );
 }

@@ -13,45 +13,39 @@ import {MealItemType} from "../types/MealItemType";
 import SearchMeal from "../components/homescreen/SearchMeal";
 import TopBar from "../components/homescreen/TopBar";
 import HeadingInfo from "../components/homescreen/HeadingInfo";
+import {useDispatch} from "react-redux";
+import {setCategoryList, useCategorySlice} from "../store/slices/categorySlice";
+
 
 function HomeScreen({navigation}) {
 
-    const [categories, setCategories] = useState<CategoryItemType[]>([]);
-    const [meals, setMeals] = useState<MealItemType[]>([]);
-    const [selectedCategory, setSelectedCategory] = useState<CategoryItemType>(null)
+    const dispatch = useDispatch();
+
 
     const getCategories = () => {
         APIManager.getCategories().then(data=> {
-            setCategories(data.data.categories)
+            dispatch(setCategoryList(data?.data?.categories));
+
         });
     }
-    const getMeals = (category) => {
-        APIManager.getMeals(category).then(data=> {
-            setMeals(data.data.meals.slice(0,12))
-        });
-    }
+
 
     useEffect(()=> {
-        // getCategories()
-           setCategories(CATDATA.categories)
+        getCategories()
+            // dispatch(setCategoryList(CATDATA.categories))
+
     },[])
 
-    useEffect(() => {
-        if(selectedCategory){
-            setMeals([])
-            // getMeals(selectedCategory.strCategory)
-            setMeals(MEALDATA)
-        }
-    }, [selectedCategory]);
+
 
     return  (
         <ScrollView style={styles.container}>
                 <TopBar navigation={navigation} />
                 <HeadingInfo/>
                 <SearchMeal/>
-                <CategoryList categories={categories} selectedCategory={selectedCategory} onCategoryChange={setSelectedCategory} />
+                <CategoryList />
                 <Text style={styles.sectionTitle}>Popular recipe</Text>
-                { meals && meals.length > 0 && <MealsList meals={meals} /> }
+                <MealsList />
         </ScrollView>
     )
 }
