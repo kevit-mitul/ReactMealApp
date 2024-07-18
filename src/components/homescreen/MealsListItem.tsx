@@ -20,10 +20,11 @@ export default function MealsListItem({index, item}: MealsItemProps) {
     return (
         <Animated.View entering={FadeInDown.duration(index * 100).springify().damping(12)}
                        style={styles.imageContainer}>
-            <TouchableOpacity onPress={handleRecipeClick}>
-                <Image
+            <TouchableOpacity onPress={handleRecipeClick} style={{ paddingLeft:index % 2 != 0 ? 7:0, paddingRight:index % 2 == 0 ? 7:0}}>
+                <Animated.Image
+                    sharedTransitionTag={"recipeImage"}
                     source={{uri: item.strMealThumb}}
-                    style={[styles.image, {height: index % 3 === 0 ? 150 : 250,}]}
+                    style={[styles.image, {height: index % 3 === 0 ? 150 : 250} ]}
                 />
                 <Text style={styles.mealTitle} numberOfLines={1}>{item.strMeal}</Text>
             </TouchableOpacity>
@@ -35,10 +36,12 @@ export default function MealsListItem({index, item}: MealsItemProps) {
 const styles = StyleSheet.create({
     image: {
         width: "100%",
-        borderRadius: 20
+        borderRadius: 20,
+        marginTop : 10,
+        marginBottom:10
     },
     imageContainer: {
-        padding: 10
+
     },
     mealTitle: {
         fontSize: Size.md,

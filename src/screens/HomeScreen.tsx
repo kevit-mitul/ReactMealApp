@@ -8,7 +8,7 @@ import {
     View
 } from "react-native";
 import {Layout} from "../theme/GlobalStyle";
-import {BellIcon, MagnifyingGlassIcon} from "react-native-heroicons/outline";
+import {BellIcon, MagnifyingGlassIcon, ArrowPathIcon} from "react-native-heroicons/outline";
 import {Colors} from "../theme/Colors";
 import Size from "../theme/Size";
 import CategoryList from "../components/homescreen/CategoryList";
@@ -19,9 +19,12 @@ import APIManager from "../api/APIManager";
 import {CATDATA, MEALDATA} from "../data";
 import {CategoryItemType} from "../types/CategoryItem.type";
 import {MealItemType} from "../types/MealItemType";
-import {useQuery} from "@tanstack/react-query";
+import Spacer from "../components/ui/Spacer";
+import SearchMeal from "../components/homescreen/SearchMeal";
+import TopBar from "../components/homescreen/TopBar";
+import HeadingInfo from "../components/homescreen/HeadingInfo";
 
-function HomeScreen() {
+function HomeScreen({navigation}) {
 
     const [categories, setCategories] = useState<CategoryItemType[]>([]);
     const [meals, setMeals] = useState<MealItemType[]>([]);
@@ -54,29 +57,14 @@ function HomeScreen() {
     return  (
         <ScrollView style={styles.container}>
 
-            <View >
-                <View style={styles.topBarContainer}>
-                    <Image style={styles.userImage} source={require("../../assets/user.png")}/>
-                    <BellIcon size={30} color={Colors.textGray}/>
-                </View>
-                <Text style={styles.title}> Hello, Mitul</Text>
-                <Text style={styles.headingText}>Make your own food,</Text>
-                <Text style={styles.headingText}>stay at <Text style={styles.subHeadingText}>Home</Text></Text>
 
-                <View style={styles.searchContainer}>
-                    <TextInput placeholder={"Search your meal..."}  style={styles.searchInput}/>
-
-                    <TouchableOpacity style={styles.searchButton}>
-                        <MagnifyingGlassIcon  size={20} color={Colors.textGray}  />
-                    </TouchableOpacity>
-
-                </View>
-
-
+                <TopBar navigation={navigation} />
+                <HeadingInfo/>
+                <SearchMeal/>
                 <CategoryList categories={categories} selectedCategory={selectedCategory} onCategoryChange={setSelectedCategory} />
                 <Text style={styles.sectionTitle}>Popular recipe</Text>
                 { meals && meals.length > 0 && <MealsList meals={meals} /> }
-            </View>
+
         </ScrollView>
     )
 
@@ -92,23 +80,9 @@ const styles = StyleSheet.create({
         backgroundColor : Colors.white
     },
 
-    topBarContainer: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-    },
 
-    userImage: {
-        width: 35,
-        height: 35,
-        borderRadius: 25
-    },
 
-    title : {
-        color:Colors.textGray,
-        fontSize:Size.sm,
-        marginVertical:10
-    },
+
 
     sectionTitle : {
         marginVertical:15,
@@ -117,33 +91,6 @@ const styles = StyleSheet.create({
         fontWeight: "bold"
     },
 
-    headingText : {
-        color :Colors.heading,
-        fontSize : Size["3xl"],
-        fontWeight: "bold"
-    },
 
-    subHeadingText : {
-        color : Colors.splashBackground,
-    },
-
-    searchContainer : {
-        marginVertical:20,
-        paddingHorizontal:15,
-        backgroundColor : Colors.bgGray,
-        borderRadius : 99,
-        alignItems : "center",
-        flexDirection: "row"
-    },
-
-    searchInput : {
-        padding : 12,
-        flex : 1
-    },
-    searchButton : {
-       backgroundColor : Colors.white,
-       borderRadius : 99,
-        padding : 8
-    }
 
 })
