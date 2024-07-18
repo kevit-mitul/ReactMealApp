@@ -5,7 +5,8 @@ import {
    QueryClient,
    QueryClientProvider,
 } from '@tanstack/react-query'
-
+import {store} from "./src/store/store";
+import {Provider} from "react-redux";
 
 const queryClient = new QueryClient();
 const Stack = createNativeStackNavigator();
@@ -14,9 +15,11 @@ export default function App() {
    return (
       <>
          <RootContainer>
-            <QueryClientProvider client={queryClient}>
-               <RootNavigator/>
-            </QueryClientProvider>
+            <Provider store={store}>
+               <QueryClientProvider client={queryClient}>
+                  <RootNavigator/>
+               </QueryClientProvider>
+            </Provider>
          </RootContainer>
       </>
    );

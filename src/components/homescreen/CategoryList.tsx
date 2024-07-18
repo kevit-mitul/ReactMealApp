@@ -1,10 +1,9 @@
-import {FlatList, ScrollView, Text, View} from "react-native";
+import {FlatList, View} from "react-native";
 import CategoryListItem  from "./CategoryListItem";
 import Animated, {FadeInDown} from "react-native-reanimated";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {CategoryItemType} from "../../types/CategoryItem.type";
-
-const Data = ["item1", "item2", "item3", "item4", "item5", "item6", "item7", "item8", "item9q",]
+import {useCategorySlice} from "../../store/slices/categorySlice";
 
 type CategoryProps = {
     categories?: CategoryItemType[],
@@ -14,6 +13,9 @@ type CategoryProps = {
 
 export default function CategoryList({categories = [], selectedCategory, onCategoryChange}: CategoryProps) {
 
+    const { categoryList, selectedCategory:selectedReduxCategory } = useCategorySlice()
+
+    console.log(categoryList, selectedReduxCategory)
 
     useEffect(() => {
         if (categories.length > 0)

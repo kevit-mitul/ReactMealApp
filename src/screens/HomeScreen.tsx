@@ -1,14 +1,5 @@
-import {
-    Animated,
-    Image,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View
-} from "react-native";
+import { Animated, StyleSheet, Text } from "react-native";
 import {Layout} from "../theme/GlobalStyle";
-import {BellIcon, MagnifyingGlassIcon, ArrowPathIcon} from "react-native-heroicons/outline";
 import {Colors} from "../theme/Colors";
 import Size from "../theme/Size";
 import CategoryList from "../components/homescreen/CategoryList";
@@ -19,7 +10,6 @@ import APIManager from "../api/APIManager";
 import {CATDATA, MEALDATA} from "../data";
 import {CategoryItemType} from "../types/CategoryItem.type";
 import {MealItemType} from "../types/MealItemType";
-import Spacer from "../components/ui/Spacer";
 import SearchMeal from "../components/homescreen/SearchMeal";
 import TopBar from "../components/homescreen/TopBar";
 import HeadingInfo from "../components/homescreen/HeadingInfo";
@@ -56,19 +46,14 @@ function HomeScreen({navigation}) {
 
     return  (
         <ScrollView style={styles.container}>
-
-
                 <TopBar navigation={navigation} />
                 <HeadingInfo/>
                 <SearchMeal/>
                 <CategoryList categories={categories} selectedCategory={selectedCategory} onCategoryChange={setSelectedCategory} />
                 <Text style={styles.sectionTitle}>Popular recipe</Text>
                 { meals && meals.length > 0 && <MealsList meals={meals} /> }
-
         </ScrollView>
     )
-
-
 }
 
 export default HomeScreen
@@ -79,18 +64,10 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         backgroundColor : Colors.white
     },
-
-
-
-
-
     sectionTitle : {
         marginVertical:15,
         color :Colors.heading,
         fontSize : Size["3xl"],
         fontWeight: "bold"
     },
-
-
-
 })
