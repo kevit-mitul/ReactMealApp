@@ -5,6 +5,7 @@ import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import SplashScreen from "../screens/SplashScreen";
 import {StatusBar} from "expo-status-bar";
 import UserProfile from "../screens/UserProfile";
+import {Colors} from "../theme/Colors";
 
 
 const Stack = createNativeStackNavigator();
@@ -24,7 +25,7 @@ const RootNavigator = () => {
                 <Stack.Screen name="UserProfile" component={UserProfile} />
             </Stack.Navigator>
         </NavigationContainer>
-            <StatusBar style="dark" />
+            {/*<StatusBar style="dark" translucent={true} />*/}
         </>
     );
 };

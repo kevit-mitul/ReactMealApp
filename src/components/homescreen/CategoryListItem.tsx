@@ -4,29 +4,30 @@ import {Colors} from "../../theme/Colors";
 import {CategoryItemType} from "../../types/CategoryItem.type";
 
 
-
-type CategoryListItemProps =  {
+type CategoryListItemProps = {
     item?: CategoryItemType,
     selectedCategory?: CategoryItemType,
-    onSelect?: (item : CategoryItemType) => void
+    onSelect?: (item: CategoryItemType) => void
 }
 
-export default function CategoryListItem({ item, onSelect, selectedCategory}: CategoryListItemProps) {
+export default function CategoryListItem({item, onSelect, selectedCategory}: CategoryListItemProps) {
 
     return (
-        <View style={styles.container}>
-            <TouchableHighlight
-                underlayColor={Colors.ringOuter}
-                style={[styles.imageContainer, item.strCategory === selectedCategory?.strCategory && {backgroundColor: Colors.splashBackground}]}
-                onPress={() => onSelect(item)}
-            >
+        <TouchableHighlight
+            style={[styles.container, item.strCategory === selectedCategory?.strCategory && {backgroundColor: Colors.splashBackground}]}
+            underlayColor={Colors.ringOuter}
+            onPress={() => onSelect(item)}
+        >
+            <View style={styles.imageContainer}>
+
                 <Image style={styles.image} source={{
                     uri: item.strCategoryThumb
                 }}/>
-            </TouchableHighlight>
 
-            <Text style={styles.text}>{item.strCategory}</Text>
-        </View>
+
+                <Text style={styles.text}>{item.strCategory}</Text>
+            </View>
+        </TouchableHighlight>
     )
 
 
@@ -34,7 +35,9 @@ export default function CategoryListItem({ item, onSelect, selectedCategory}: Ca
 
 const styles = StyleSheet.create({
     container: {
-        alignItems: "center"
+        alignItems: "center",
+        borderRadius: 70,
+        paddingBottom: 25
     },
     image: {
         width: 70,
@@ -43,7 +46,8 @@ const styles = StyleSheet.create({
     },
     imageContainer: {
         padding: 3,
-        borderRadius: 99
+        borderRadius: 99,
+        alignItems : "center"
     },
     text: {
         marginTop: 10,

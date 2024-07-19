@@ -12,7 +12,7 @@ function TopBar({navigation}) {
             </TouchableOpacity>
 
             <View style={Layout.flexRow}>
-                <ArrowPathIcon size={30} color={Colors.textGray} onPress={()=>navigation.navigate("Splash")}/>
+                <ArrowPathIcon size={30} color={Colors.textGray} onPress={()=>navigation.push("Splash")}/>
                 <Spacer width={12}/>
                 <BellIcon size={30} color={Colors.textGray}/>
 

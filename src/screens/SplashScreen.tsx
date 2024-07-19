@@ -4,8 +4,8 @@ import {Colors} from "../theme/Colors";
 import Size from "../theme/Size";
 import Animated, {useSharedValue, withSpring, FadeInDown} from 'react-native-reanimated';
 import {useEffect} from "react";
-
-function SplashScreen( { navigation} ) {
+import {StatusBar} from "expo-status-bar";
+function SplashScreen({navigation}) {
 
     const outerRingPadding = useSharedValue(0);
     const innerRingPadding = useSharedValue(0);
@@ -13,14 +13,15 @@ function SplashScreen( { navigation} ) {
     useEffect(() => {
         outerRingPadding.value = 0
         innerRingPadding.value = 0
-        setTimeout(()=> outerRingPadding.value = withSpring(outerRingPadding.value + 50) , 200)
-        setTimeout(()=> innerRingPadding.value = withSpring(outerRingPadding.value + 30) , 100)
-        setTimeout( ()=> navigation.navigate("Home"), 2000 )
+        setTimeout(() => outerRingPadding.value = withSpring(outerRingPadding.value + 50), 200)
+        setTimeout(() => innerRingPadding.value = withSpring(outerRingPadding.value + 30), 100)
+        setTimeout(() => navigation.navigate("Home"), 2000)
     }, []);
 
     return <View style={styles.container}>
-        <Animated.View style={[styles.ringOuter , {padding : outerRingPadding}]}>
-            <Animated.View style={[styles.ringInner, {padding : innerRingPadding}]}>
+        <StatusBar backgroundColor={Colors.splashBackground} />
+        <Animated.View style={[styles.ringOuter, {padding: outerRingPadding}]}>
+            <Animated.View style={[styles.ringInner, {padding: innerRingPadding}]}>
                 <Image style={styles.logo} source={require("../../assets/logo.png")}/>
             </Animated.View>
         </Animated.View>
@@ -62,12 +63,12 @@ const styles = StyleSheet.create({
         marginTop: 15,
         alignItems: "center"
     },
-    ringInner : {
-        backgroundColor : Colors.ringInner,
-        borderRadius : 999
+    ringInner: {
+        backgroundColor: Colors.ringInner,
+        borderRadius: 999
     },
-    ringOuter : {
-        backgroundColor : Colors.ringOuter,
-        borderRadius : 999
+    ringOuter: {
+        backgroundColor: Colors.ringOuter,
+        borderRadius: 999
     }
 })
