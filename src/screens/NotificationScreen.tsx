@@ -1,14 +1,14 @@
-import {View, StyleSheet, ScrollView, TouchableOpacity, Image, Text, TextInput} from 'react-native'
-import HeadingInfo from "../components/homescreen/HeadingInfo";
-import {Layout} from "../theme/GlobalStyle";
-import {ArrowLeftIcon} from 'react-native-heroicons/solid'
+import {View, StyleSheet, Text, TouchableOpacity, ScrollView, FlatList} from 'react-native'
+import {ArrowLeftIcon} from "react-native-heroicons/solid";
 import {Colors} from "../theme/Colors";
-import Spacer from "../components/ui/Spacer";
-import Button from "../components/ui/Button";
+import HeadingInfo from "../components/homescreen/HeadingInfo";
 import UserForm from "../components/userprofilescreen/UserForm";
+import Spacer from "../components/ui/Spacer";
+import {Layout} from "../theme/GlobalStyle";
 
-function UserProfile({navigation}) {
+const data = ["1","2","3","4","5","6","7","8","9"];
 
+function NotificationScreen({navigation}) {
     const handleBackPress = () => {
         navigation.goBack()
     }
@@ -21,18 +21,16 @@ function UserProfile({navigation}) {
                 </TouchableOpacity>
             </View>
             <ScrollView style={styles.scrollContainer}>
-                <HeadingInfo line1="You can update your" line2={"profile "} highlight="Here"/>
-                <View style={styles.profileContainer}>
-                    <UserForm/>
-                    <Spacer height={50}/>
+                <HeadingInfo line1="Nofications"/>
 
-                </View>
+                {/*<FlatList data={data} renderItem={ () => {} } />*/}
+
             </ScrollView>
         </View>
     );
 }
 
-export default UserProfile;
+export default NotificationScreen;
 
 const styles = StyleSheet.create({
     container: {
@@ -51,8 +49,4 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         backgroundColor: Colors.white,
     },
-    profileContainer: {
-        marginTop: 30
-    },
-
 })

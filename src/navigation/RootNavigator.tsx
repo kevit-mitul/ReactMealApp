@@ -6,6 +6,7 @@ import SplashScreen from "../screens/SplashScreen";
 import {StatusBar} from "expo-status-bar";
 import UserProfile from "../screens/UserProfile";
 import {Colors} from "../theme/Colors";
+import NotificationScreen from "../screens/NotificationScreen";
 
 
 const Stack = createNativeStackNavigator();
@@ -23,6 +24,7 @@ const RootNavigator = () => {
                 <Stack.Screen name="Home" component={HomeScreen} />
                 <Stack.Screen name="MealDetail" component={MealDetail} />
                 <Stack.Screen name="UserProfile" component={UserProfile} />
+                <Stack.Screen name="Notification" component={NotificationScreen} />
             </Stack.Navigator>
         </NavigationContainer>
             {/*<StatusBar style="dark" translucent={true} />*/}

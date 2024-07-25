@@ -1,15 +1,17 @@
-import {View, StyleSheet, Text, TouchableOpacity} from 'react-native'
+import {View, StyleSheet, Text, TouchableOpacity, ActivityIndicator} from 'react-native'
 import {Colors} from "../../theme/Colors";
 
 type ButtonProps = {
     label?: string,
     onPress?: () => void,
+    loading? : boolean
 }
 
-function Button({label, onPress} : ButtonProps) {
+function Button({label, onPress, loading = false} : ButtonProps) {
     return (
         <TouchableOpacity activeOpacity={0.7} style={styles.container} onPress={onPress}>
-            <Text style={styles.label}>{label}</Text>
+            { loading ? <ActivityIndicator color={Colors.white} size="small"/> :  <Text style={styles.label}>{label}</Text> }
+
         </TouchableOpacity>
     );
 }

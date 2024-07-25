@@ -5,35 +5,21 @@ import Size from "../theme/Size";
 import CategoryList from "../components/homescreen/CategoryList";
 import ScrollView = Animated.ScrollView;
 import MealsList from "../components/homescreen/MealsList";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import APIManager from "../api/APIManager";
-import {CATDATA, MEALDATA} from "../data";
-import {CategoryItemType} from "../types/CategoryItem.type";
-import {MealItemType} from "../types/MealItemType";
 import SearchMeal from "../components/homescreen/SearchMeal";
 import TopBar from "../components/homescreen/TopBar";
 import HeadingInfo from "../components/homescreen/HeadingInfo";
-import {useDispatch} from "react-redux";
-import {setCategoryList, useCategorySlice} from "../store/slices/categorySlice";
+import {getCategories, useCategorySlice} from "../store/slices/categorySlice";
 import {StatusBar} from "expo-status-bar";
+import {useAppDispatch} from "../store/store";
 
 function HomeScreen({navigation}) {
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
-
-    const getCategories = () => {
-        APIManager.getCategories().then(data => {
-            dispatch(setCategoryList(data?.data?.categories));
-
-        });
-    }
-
-
-    useEffect(() => {
-        getCategories()
-        // dispatch(setCategoryList(CATDATA.categories))
-
+     useEffect(() => {
+        dispatch(getCategories())
     }, [])
 
 

@@ -8,12 +8,14 @@ type HeadingInfoProps = {
     highlight?: string,
 }
 
-function HeadingInfo({line1 = "Make your own food,", line2 = "stay at ", highlight = "Home"}: HeadingInfoProps) {
+function HeadingInfo({line1 = "", line2 = "", highlight = ""}: HeadingInfoProps) {
     return (
         <>
-            <Text style={styles.title}> Hello, Mitul</Text>
-            <Text style={styles.headingText}>{line1}</Text>
-            <Text style={styles.headingText}>{line2}<Text style={styles.subHeadingText}>{highlight}</Text></Text>
+            { highlight && <Text style={styles.title}> Hello, Mitul</Text> }
+            { line1 && <Text style={styles.headingText}>{line1}</Text> }
+            { line2 && <Text style={styles.headingText}>{line2}<Text style={styles.subHeadingText}>{highlight}</Text></Text>}
+
+
         </>
     );
 }

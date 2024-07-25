@@ -9,4 +9,4 @@ const Spacing = {
     screenBottomPadding: 30,
 }
 
-export { Spacing}
+export { Spacing }

@@ -1,7 +1,11 @@
 import React from 'react';
 import {ActivityIndicator, StyleSheet, View} from "react-native";
 
-const Loader = () => {
+type HeightLoaderProps = {
+    size? : number
+}
+
+const Loader = ({size} : HeightLoaderProps) => {
     return (
         <View style={styles.container}>
             <ActivityIndicator size={"large"} color="black" />

@@ -3,18 +3,31 @@ import {Layout} from "../../theme/GlobalStyle";
 import {ArrowPathIcon, BellIcon} from "react-native-heroicons/outline";
 import {Colors} from "../../theme/Colors";
 import Spacer from "../ui/Spacer";
+import {useNavigation} from "@react-navigation/native";
 
 function TopBar({navigation}) {
+    const navigate = useNavigation();
+
+    const handleNotificationClick = () =>{
+        navigation.navigate("Notification");
+    }
+
+    const handleReloadClick = () => {
+        navigation.navigate("UserProfile");
+    }
+
     return (
         <View style={styles.topBarContainer}>
-            <TouchableOpacity style={styles.userImageContainer} onPress={()=> navigation.navigate("UserProfile")}>
+            <TouchableOpacity style={styles.userImageContainer} onPress={handleReloadClick}>
                 <Image style={styles.userImage} source={require("../../../assets/user.png")}/>
             </TouchableOpacity>
 
             <View style={Layout.flexRow}>
                 <ArrowPathIcon size={30} color={Colors.textGray} onPress={()=>navigation.push("Splash")}/>
                 <Spacer width={12}/>
-                <BellIcon size={30} color={Colors.textGray}/>
+                <TouchableOpacity onPress={handleNotificationClick}>
+                    <BellIcon size={30} color={Colors.textGray}/>
+                </TouchableOpacity>
 
             </View>
         </View>

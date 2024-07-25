@@ -19,13 +19,10 @@ export default function CategoryListItem({item, onSelect, selectedCategory}: Cat
             onPress={() => onSelect(item)}
         >
             <View style={styles.imageContainer}>
-
                 <Image style={styles.image} source={{
                     uri: item.strCategoryThumb
                 }}/>
-
-
-                <Text style={styles.text}>{item.strCategory}</Text>
+                <Text style={[styles.text,  { color:  item.strCategory === selectedCategory?.strCategory ? "white" : "black"  } ]}>{item.strCategory}</Text>
             </View>
         </TouchableHighlight>
     )

@@ -20,9 +20,9 @@ function CustomInputBox({ control, name, hint = "",  keyboardType = "default", i
             <Controller
                 control={control}
                 render={({ field: { onChange, onBlur, value } , fieldState  }) => (
-                    <View>
-                        <View style={[styles.textInputContainer, { borderColor : fieldState.error ? "red" : "" } ]}>
 
+                    <View style={styles.container}>
+                        <View style={[styles.textInputContainer, { borderColor : fieldState.error ? "red" : "transparent" } ]}>
                             <TextInput
                                 placeholder={hint}
                                 secureTextEntry={isPassword}
@@ -52,9 +52,13 @@ function CustomInputBox({ control, name, hint = "",  keyboardType = "default", i
 export default CustomInputBox;
 
 const styles = StyleSheet.create({
+    container :{
+        marginBottom : 15
+    },
+
     textInputContainer : {
-        marginVertical:10,
         paddingHorizontal:15,
+        marginBottom : 7,
         backgroundColor : Colors.bgGray,
         borderRadius : 99,
 
@@ -70,6 +74,7 @@ const styles = StyleSheet.create({
     },
 
     errorText : {
-        color : "red"
+        color : "red",
+        marginLeft : 15
     }
 })
