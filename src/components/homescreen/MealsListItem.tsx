@@ -3,6 +3,7 @@ import Animated, {FadeInDown} from "react-native-reanimated";
 import {MealItemType} from "../../types/MealItemType";
 import Size from "../../theme/Size";
 import {useNavigation} from "@react-navigation/native";
+import { vs, mvs } from "../../utils/Scaling";
 
 type MealsItemProps = {
     item: MealItemType
@@ -24,7 +25,7 @@ export default function MealsListItem({index, item}: MealsItemProps) {
                 <Animated.Image
                     sharedTransitionTag={"recipeImage"}
                     source={{uri: item.strMealThumb}}
-                    style={[styles.image, {height: index % 3 === 0 ? 150 : 250} ]}
+                    style={[styles.image, {height: index % 3 === 0 ? mvs(150) : mvs(250)} ]}
                 />
                 <Text style={styles.mealTitle} numberOfLines={1}>{item.strMeal}</Text>
             </TouchableOpacity>

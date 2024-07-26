@@ -1,6 +1,7 @@
 import {View, StyleSheet, TouchableOpacity, Text, Linking, Alert} from 'react-native'
 import {Colors} from "../../theme/Colors";
 import Size from "../../theme/Size";
+import {mvs} from "../../utils/Scaling";
 
 type YoutubeButtonProps = {
     url: string;
@@ -32,8 +33,8 @@ const styles = StyleSheet.create({
     youtubeButton : {
         backgroundColor : Colors.primary,
         borderRadius : 99,
-        paddingVertical : 10,
-        marginBottom : 30
+        paddingVertical : mvs(10),
+        marginBottom : mvs(30)
 
     },
     youtubeText : {

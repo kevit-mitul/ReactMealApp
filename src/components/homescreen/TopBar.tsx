@@ -4,6 +4,7 @@ import {ArrowPathIcon, BellIcon} from "react-native-heroicons/outline";
 import {Colors} from "../../theme/Colors";
 import Spacer from "../ui/Spacer";
 import {useNavigation} from "@react-navigation/native";
+import {ms} from "../../utils/Scaling";
 
 function TopBar({navigation}) {
     const navigate = useNavigation();
@@ -48,8 +49,8 @@ const styles = StyleSheet.create({
     },
 
     userImage: {
-        width: 35,
-        height: 35,
+        width: ms(35),
+        height: ms(35),
         borderRadius: 25
     },
 

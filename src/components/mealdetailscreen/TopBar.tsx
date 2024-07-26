@@ -3,6 +3,7 @@ import {Colors} from "../../theme/Colors";
 import {ArrowLeftIcon, HeartIcon} from "react-native-heroicons/solid";
 import {Dimensions} from "react-native";
 import {useNavigation} from "@react-navigation/native";
+import {ms} from "../../utils/Scaling";
 const height = Dimensions.get("window").height;
 
 type TopBarProps = {
@@ -21,7 +22,7 @@ function TopBar({mealData} : TopBarProps) {
                                     onPress={() => {
                                         navigation.goBack()
                                     }}>
-                    <ArrowLeftIcon size={15} color={Colors.black}/>
+                    <ArrowLeftIcon size={ms(15)} color={Colors.black}/>
                 </TouchableHighlight>
 
                 <TouchableHighlight style={styles.favoriteContainer} onPress={() => {

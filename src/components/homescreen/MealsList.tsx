@@ -5,6 +5,8 @@ import {useEffect, useState} from "react";
 import APIManager from "../../api/APIManager";
 import {useCategorySlice} from "../../store/slices/categorySlice";
 import HeightLoader from "../HeightLoader";
+import  {s } from '../../utils/Scaling'
+
 
 export default function MealsList() {
 
@@ -32,7 +34,7 @@ export default function MealsList() {
     return(
         <MasonryFlashList
             data={meals}
-            estimatedItemSize={220}
+            estimatedItemSize={s(220)}
             numColumns={2}
             renderItem={({ item , index }) => <MealsListItem index={index} item={item as MealItemType} />}
         />
